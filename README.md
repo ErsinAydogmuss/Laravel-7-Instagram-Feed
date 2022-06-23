@@ -25,7 +25,8 @@ LARAVEL INSTAGRAMDAN VERİ ÇEKME API’SI
 	add instagram tester a basarak verisini çekeceğimiz instagram hesabının adını yazıyoruz ve okeyliyoruz.
 	Verileri çekilecek instagram hesabına web üzerinden girerek ayarlar -> uygulamalar ve internet siteleri -> Test kullanıcısı  	davetleri’ne 		girerek isteği onaylıyoruz.
 
-6- Terminale bunu yazıyoruz ve Dymantic\InstagramFeed\InstagramFeedServiceProvider olanı seçiyoruz
+6- Terminale bunu yazıyoruz ve Dymantic\InstagramFeed\InstagramFeedServiceProvider olanı seçiyoruz	
+
 	php artisan vendor:publish
 	Ardından php artisan migrate ederek database ‘ e bu tabloların oluşmasını sağlıyoruz.
 	Bu 2 tane tablo oluşturuyor 
@@ -37,6 +38,7 @@ LARAVEL INSTAGRAMDAN VERİ ÇEKME API’SI
 	‘client_secret’ => ‘YAPIŞTIR’
 
 8- Oluşturduğumuz App’in sitesine girip ÖRNEĞİN
+
 	Valid OAuth Redirect URIs : https://anadolureklam.dijifikir.xyz/instagram/auth/callback
 	Deauthorize callback URL : https://anadolureklam.dijifikir.xyz/
 	Data Deletion Request URL : https://anadolureklam.dijifikir.xyz/ 
@@ -44,11 +46,15 @@ LARAVEL INSTAGRAMDAN VERİ ÇEKME API’SI
 
 9- Terminale gelerek izin alınan instagram adını yazarak tabloya bu profili eklemiş oluyoruz.
 	ÖRNEK !!!
+	
 	php artisan instagram-feed:profile ersinaydogmuss
 	
 10- Terminale gelerek php artisan tinker yazarak modunu feed modunu açıyoruz.
 	ORNEK !!!
-	$profile = \Dymantic\InstagramFeed\Profile::where('username', ‘ersinaydogmuss’)->first()        :  Bu komut bu profili 		önbelleğe alıyor. Yani bundan sonra yazacağımız komut bu profil için geçerli olacak.
+	
+	$profile = \Dymantic\InstagramFeed\Profile::where('username', ‘ersinaydogmuss’)->first()        :  Bu komut bu profili 		önbelleğe alıyor.
+	
+	Yani bundan sonra yazacağımız komut bu profil için geçerli olacak.
 
 11- $profile->getInstagramAuthUrl().   : yazınca bir link çıkacak o linki chrome da açtığımızda bir izin sayfasına yönlendirecek 	izin almak 		istediğimiz profilin şifresini girerek izin veriyoruz. Ve bu da 2. Tablomuza token’ı kayıt ediyor.
 	(BU KISIMDA OLASI OLARAK ALTTAKİ SORUNU YAŞAYABİLİRSİNİZ)
